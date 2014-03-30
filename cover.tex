@@ -26,42 +26,43 @@
 %%%%%%%%%%%%%%%%%   CONSTANTS   %%%%%%%%%%%%%%%%%
 
 % AUTHOR INFORMATION
-\newcommand{\covertitle}{Name~Surname}					% Title of cover letter
-\newcommand{\pdftitle}{Cover~letter~\covertitle}			% Title of PDF
-\newcommand{\pdfauthor}{\covertitle}						% Author of PDF
+\newcommand{\covertitle}{Name~Surname}                  % Title of cover letter
+\newcommand{\pdftitle}{Cover~letter~\covertitle}        % Title of PDF
+\newcommand{\pdfauthor}{\covertitle}                    % Author of PDF
 
-\newcommand{\authoraddress}{								% Author's mailing address
-	My address line 1 \\
-	My address line 2}			
-\newcommand{\authorweb}{http://mywebsite.com}			% Author's web site
-\newcommand{\authoremail}{myemail@example.com}			% Author's email address
-\newcommand{\authortel}{+1~2345~678~901}					% Author's phone number
+\newcommand{\authoraddress}{                            % Author's mailing address
+    My address line 1 \\
+    My address line 2}          
+\newcommand{\authorweb}{http://mywebsite.com}           % Author's web site
+\newcommand{\authoremail}{myemail@example.com}          % Author's email address
+\newcommand{\authortel}{+1~2345~678~901}                % Author's phone number
 
 % STYLE ATTRIBUTES
-\newcommand{\linkcolor}{blue}				% Color of links
-\newcommand{\titlefontsize}{12pt}			% Font size of cover title
-\newcommand{\marginleft}{2.5cm}				% Left margin
-\newcommand{\marginright}{2.5cm}				% Right margin
-\newcommand{\margintop}{2.5cm}				% Top margin
-\newcommand{\marginbottom}{3cm}				% Bottom margin
+\newcommand{\linkcolor}{blue}               % Color of links
+\newcommand{\titlefontsize}{12pt}           % Font size of cover title
+\newcommand{\marginleft}{2.5cm}             % Left margin
+\newcommand{\marginright}{2.5cm}            % Right margin
+\newcommand{\margintop}{2.5cm}              % Top margin
+\newcommand{\marginbottom}{3cm}             % Bottom margin
 
 % Letter date
 \date{\today} % Put \today to have today's date
 
 %%%%%%%%%%%%%%%%%   PACKAGE IMPORTS   %%%%%%%%%%%%%%%%%
 \usepackage[a4paper, bindingoffset=0.0cm, left=\marginleft, right=\marginright, top=\margintop, bottom=\marginbottom, footskip=.25in]{geometry}
-\usepackage[bottom]{footmisc}	% This is to push footnotes to the bottom
+\usepackage[bottom]{footmisc}   % This is to push footnotes to the bottom
 \usepackage{url}
 \usepackage[dvipdfm, bookmarks, colorlinks, breaklinks, pdftitle=\pdftitle, pdfauthor=\pdfauthor]{hyperref}
 \hypersetup{linkcolor=\linkcolor, citecolor=\linkcolor, filecolor=black, urlcolor=\linkcolor} 
-\pagenumbering{gobble}	% Comment out to show page numbers (1st page number will not be shown)
+\pagenumbering{gobble}  % Comment out to show page numbers (1st page number will not be shown)
+
 
 \begin{document}
 
-\signature{Name Surname}		% name for signature
+\signature{Name Surname}        % name for signature
  
-\longindentation=0pt				% needed to get closing flush left
-\let\raggedleft\raggedright		% needed to get date flush left
+\longindentation=0pt            % needed to get closing flush left
+\let\raggedleft\raggedright     % needed to get date flush left
 
 % Reduce size of bullet character
 \renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -70,26 +71,26 @@
 
 % Make the title of the cover letter
 \newcommand{\makecovertitle}{
-	\begin{center}
-	{\Large\bf \covertitle} 
-	\end{center}
-	\smallskip\hrule height 1pt
+    \begin{center}
+    {\Large\bf \covertitle} 
+    \end{center}
+    \smallskip\hrule height 1pt
 }
 
-% Creates list of contact information
+% Create list of contact information
 \newcommand{\contact}{
-	\begin{center}
-	\authoraddress \\
-	Email: \href{mailto:\authoremail}{\texttt{\authoremail}} \\
-	Web: \url{\authorweb}\\
-	Tel: \authortel
-	\end{center} 
+    \begin{center}
+    \authoraddress \\
+    Email: \href{mailto:\authoremail}{\texttt{\authoremail}} \\
+    Web: \url{\authorweb}\\
+    Tel: \authortel
+    \end{center} 
 }
 
 %%%%%%%%%%%%%%%%%   DOCUMENT   %%%%%%%%%%%%%%%%%
 
 \begin{letter}
-{	% Recipient
+{   % Recipient
 \textbf{Receipient} \\
 Address line 1 \\
 Address line 2 \\
@@ -116,9 +117,9 @@ No verterem invenire conceptam vel, ad vel graece eirmod, quas doctus eam no. Od
 Eos graeci consequat ad, fugit dignissim referrentur te nam, pertinacia instructior nam in. 
 
 \begin{itemize}
-\item Affert vivendo incorrupte vis an, ad omnes aeterno vel. In sed solet maiorum deserunt, an qui tation nonumes, no ius iuvaret dissentias adversarium.
-\item Nam utamur imperdiet ne, causae maiestatis vix ei. Eos detracto accusamus liberavisse at, falli regione no nam, ea nec omnium minimum petentium.
-\item Ne eam modo omittantur, eu qui hinc alterum.
+    \item Affert vivendo incorrupte vis an, ad omnes aeterno vel. In sed solet maiorum deserunt, an qui tation nonumes, no ius iuvaret dissentias adversarium.
+    \item Nam utamur imperdiet ne, causae maiestatis vix ei. Eos detracto accusamus liberavisse at, falli regione no nam, ea nec omnium minimum petentium.
+    \item Ne eam modo omittantur, eu qui hinc alterum.
 \end{itemize}   
 
 Ad albucius phaedrum vis, mandamus gloriatur mea et. Sea tation cotidieque adversarium ei. An nullam tamquam nec, pri quot discere reprehendunt ut. Probatus corrumpit referrentur duo eu. Ne vel iusto latine signiferumque.
