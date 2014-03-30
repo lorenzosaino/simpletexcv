@@ -1,0 +1,301 @@
+% Copyright (C) 2014 Lorenzo Saino (http://github.com/lorenzosaino)
+%
+% Permission is hereby granted, free of charge, to any person
+% obtaining a copy of this software and associated documentation
+% files (the "Software"), to deal in the Software without 
+% restriction, including without limitation the rights to use,
+% copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software
+% is furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be
+% included in all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+% NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+% WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+% DEALINGS IN THE SOFTWARE.
+
+% CV using letter.cls
+\documentclass[a4paper, 11pt]{letter}
+
+ 
+%%%%%%%%%%%%%%%%%   CONSTANTS   %%%%%%%%%%%%%%%%%
+
+% AUTHOR DETAILS
+\newcommand{\cvauthor}{Name~Surname}							% Author of CV
+\newcommand{\authoremail}{myname@example.com}				% Email of CV author
+\newcommand{\authortel}{+1~2345~678~901}						% Github name of CV author
+\newcommand{\authornation}{My nationality}					% Nationality of CV author
+\newcommand{\authorweb}{http://mywebsite.com}				% Web page of CV author
+\newcommand{\authorlinkedin}{linkedin.name}					% Linkedin name of CV author
+\newcommand{\authorgithub}{github.name}					% Github name of CV author
+% Author address
+\newcommand{\authoraddrone}{Room 123}						% First line
+\newcommand{\authoraddrtwo}{Address line 1}					% Second line
+\newcommand{\authoraddrthree}{Address line 2}				% Third line
+\newcommand{\authoraddrfour}{City}							% Fourth line
+\newcommand{\authoraddrfive}{Country}						% Fifth line
+
+\newcommand{\pdftitle}{CV \cvauthor}			% Title of PDF
+\newcommand{\pdfauthor}{\cvauthor}			% Author of PDF
+
+% STYLE ATTRIBUTES
+\newcommand{\titlecolor}{black}				% Color of CV title
+\newcommand{\sectioncolor}{black}			% Color of section titles
+\newcommand{\linkcolor}{blue}				% Color of links
+\newcommand{\titlefontsize}{12pt}			% Font size of CV title
+\newcommand{\sectionfontsize}{12pt}			% Font size of section title
+\newcommand{\subsectionfontsize}{11pt}		% Font size of job titles, edu titles and similar
+\newcommand{\linespacing}{.2em}				% Line spacing for section-level text
+\newcommand{\leftspacing}{0.8cm}				% Left spacing of bullet points
+\newcommand{\innerlinespacing}{0.1em}		% Line spacing for description text inside edu and work entries
+\newcommand{\marginleft}{2cm}				% Left margin
+\newcommand{\marginright}{2cm}				% Right margin
+\newcommand{\margintop}{2cm}					% Top margin
+\newcommand{\marginbottom}{2cm}				% Bottom margin
+
+
+%%%%%%%%%%%%%%%%%   PACKAGE IMPORTS   %%%%%%%%%%%%%%%%%
+\usepackage[a4paper, bindingoffset=0.0cm, left=\marginleft, right=\marginright, top=\margintop, bottom=\marginbottom, footskip=.25in]{geometry}
+\usepackage{url}
+\usepackage[dvipdfm, bookmarks, colorlinks, breaklinks, pdftitle=\pdftitle, pdfauthor=\pdfauthor]{hyperref}
+\hypersetup{linkcolor=\linkcolor, citecolor=\linkcolor, filecolor=black, urlcolor=\linkcolor} 
+
+\usepackage{ifthen}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{scrextend}
+\usepackage[normalem]{ulem}
+
+\widowpenalty10000
+\clubpenalty10000
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%   COMMAND DEFINITIONS   %%%%%%%%%%%%%%%%%
+
+% Make the title of the CV
+\renewcommand{\maketitle}[1]{
+	\begin{center}
+	{\textcolor{\titlecolor}{\Large\bf #1}} 
+	\end{center}
+	\smallskip\hrule height 1pt
+}			
+
+% Create the list of contact details
+\newcommand{\contact}{
+Web: \url{\authorweb} \hfill \authoraddrone \\
+Email: \href{mailto:\authoremail}{\texttt{\authoremail}} \hfill \authoraddrtwo \\
+GitHub: \href{http://www.github.com/\authorgithub}{\texttt{@\authorgithub}} \hfill \authoraddrthree \\
+Tel: \authortel \hfill \authoraddrfour \\
+Nationality: \authornation \hfill \authoraddrfive
+}
+
+% This command defines the style of the section title
+\newcommand{\section}[1]{
+	\medskip
+	{\fontsize{\sectionfontsize}{\sectionfontsize}\textcolor{\sectioncolor}{\bf #1}}
+	\smallskip
+	\hrule height 0.5pt
+	\smallskip
+}
+
+% Entry for text divided in three columns
+\newcommand{\threecolumns}[3]{
+	\begin{tabular}{p{0.33\linewidth} p{0.33\linewidth} p{0.33\linewidth}}
+	\parbox[t]{\textwidth}{#1} & \parbox[t]{\textwidth}{#2} & \parbox[t]{\textwidth}{#3}
+	\end{tabular}
+}
+
+% Entry for text divided in two columns
+\newcommand{\twocolumns}[2]{
+	\begin{tabular}{p{0.5\linewidth} p{0.5\linewidth}}
+	\parbox[t]{\textwidth}{#1} & \parbox[t]{\textwidth}{#2}
+	\end{tabular}
+}
+
+% Work entry where title and employer are on two lines
+\newcommand{\workentrytwolines}[4]{
+	% Arguments: date, title, employer, description
+	{\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#2} \hfill \textbf{#1} \\
+	\textbf{#3}
+	}
+
+	\vspace{0mm}
+	{\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+	\setlength{\parskip}{0cm plus0mm minus0mm}#4}
+	
+}
+
+% Work entry where title and employer are on the same lines
+\newcommand{\workentryoneline}[4]{
+	% Arguments: date, title, employer, description
+	{\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#2, #3} \hfill \textbf{#1}
+	}
+
+	\vspace{0mm}
+	{\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+	\setlength{\parskip}{0cm plus0mm minus0mm}#4}
+	
+}
+
+% Education entry
+\newcommand{\eduentry}[5]{
+	% Arguments: date, degree, university, grade, description
+	{\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#3} \hfill \textbf{#1} \\
+	\textit{#2}
+	}
+
+	\vspace{0mm}
+	{\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+	\setlength{\parskip}{0cm plus0mm minus0mm}#4}
+}
+
+% Generic entry in a CV with first a title and a description
+\newcommand{\cvitem}[2]{
+	% Arguments: title (bold part), description (non-bold part)
+	{\setlength{\parskip}{\linespacing plus0mm minus0mm}\textbf{#1}: #2}
+
+}
+
+% Publication entry with one line per title, one line per author and one line per venue
+\newcommand{\publicationeasyread}[4]{
+	% Arguments: authors, title, proceeding, url
+	\href{#4}{\textbf{#2}} \\
+	#1 \\
+	#3
+}
+
+% Publication entry with classical ordering of elements
+\newcommand{\publicationclassic}[4]{
+	% Arguments: authors, title, proceeding, url
+	#1, \href{#4}{#2}, in \textit{#3}
+}
+
+% Selectors for multiple implementations
+\newcommand{\workentry}{\workentryoneline}
+\newcommand{\publication}{\publicationeasyread}
+
+% Set default formatting for lists (bullet and numbered lists)
+\setlist{itemsep=\linespacing, topsep=.0em, leftmargin=\leftspacing}
+
+% Reduce size of bullet character
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+%%%%%%%%%%%%%%%%%   DOCUMENT   %%%%%%%%%%%%%%%%%
+
+\maketitle{\cvauthor}
+
+\contact
+
+
+\section{Profile}
+
+\begin{itemize}
+
+\item First bullet point
+
+\item Second bullet point
+
+\item Third bullet point
+
+\end{itemize}
+
+
+
+\section{Experience}
+
+\workentry{2011--present}
+{Job title}{Employer}{
+\begin{itemize}
+\item Responsibility/achievement 1.
+\item Responsibility/achievement 2.
+\item Responsibility/achievement 3.
+\end{itemize}
+}
+
+\workentry{2008--2011}
+{Job title}{Employer}{
+Brief description of this job entry.\\
+Can have multiple lines.
+}
+
+\section{Education}
+
+\eduentry{2005--2008}
+{Ph.D., CV engineering}
+{University of Example}
+{\begin{itemize}
+\item Advisor: Prof. Name Surname
+\item Thesis: ``A simple CV template''
+\end{itemize}
+}
+
+\eduentry{2004--2008}
+{Degree title}
+{University of Example}
+{Brief description of this education entry.\\
+Can have multiple lines.
+}
+
+
+\section{Skills}
+
+\cvitem{Category}{Item 1, item 2, item 3}
+
+\cvitem{Category}{Item 1, item 2, item 3}
+
+\cvitem{Category}{Item 1, item 2, item 3}
+
+
+\section{Publications}
+
+\begin{enumerate}
+
+\item \publication{Author 1, Author 2, Author 3}{Publication title}{Conference on Latex CV}{http://example.com/publication.pdf}
+
+\item \publication{Author 1, Author 2, Author 3}{Publication title}{Conference on Latex CV}{http://example.com/publication.pdf}
+
+\item \publication{Author 1, Author 2, Author 3}{Publication title}{Conference on Latex CV}{http://example.com/publication.pdf}
+
+\end{enumerate}
+
+
+
+\section{Honors and Awards}
+
+\begin{itemize}
+	\item Award 1
+	\item Award 2
+	\item Award 3
+\end{itemize}
+
+
+
+\section{References}
+
+\twocolumns{
+\textbf{Prof. Referee One}\\
+Full Professor\\
+Dept. of CV engineering\\
+University of Example\\
+Web: \url{http://www.example.edu/~refereeone}\\
+Email: \href{mailto:refone@example.edu}{\texttt{refone@example.edu}}
+}{
+\textbf{Prof. Referee Two}\\
+Full Professor\\
+Dept. of CV engineering\\
+University of Example\\
+Web: \url{http://www.example.edu/~refereetwo}\\
+Email: \href{mailto:reftwo@example.edu}{\texttt{reftwo@example.edu}}
+}
+
+
+
+\end{document}

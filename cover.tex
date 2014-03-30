@@ -1,0 +1,139 @@
+% Copyright (C) 2014 Lorenzo Saino (http://github.com/lorenzosaino)
+%
+% Permission is hereby granted, free of charge, to any person
+% obtaining a copy of this software and associated documentation
+% files (the "Software"), to deal in the Software without 
+% restriction, including without limitation the rights to use,
+% copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software
+% is furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be
+% included in all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+% NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+% WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+% DEALINGS IN THE SOFTWARE.
+
+% Cover letter using letter.cls
+\documentclass[a4paper, 11pt]{letter}
+
+%%%%%%%%%%%%%%%%%   CONSTANTS   %%%%%%%%%%%%%%%%%
+
+% AUTHOR INFORMATION
+\newcommand{\covertitle}{Name~Surname}					% Title of cover letter
+\newcommand{\pdftitle}{Cover~letter~\covertitle}			% Title of PDF
+\newcommand{\pdfauthor}{\covertitle}						% Author of PDF
+
+\newcommand{\authoraddress}{								% Author's mailing address
+	My address line 1 \\
+	My address line 2}			
+\newcommand{\authorweb}{http://mywebsite.com}			% Author's web site
+\newcommand{\authoremail}{myemail@example.com}			% Author's email address
+\newcommand{\authortel}{+1~2345~678~901}					% Author's phone number
+
+% STYLE ATTRIBUTES
+\newcommand{\linkcolor}{blue}				% Color of links
+\newcommand{\titlefontsize}{12pt}			% Font size of cover title
+\newcommand{\marginleft}{2.5cm}				% Left margin
+\newcommand{\marginright}{2.5cm}				% Right margin
+\newcommand{\margintop}{2.5cm}				% Top margin
+\newcommand{\marginbottom}{3cm}				% Bottom margin
+
+% Letter date
+\date{\today} % Put \today to have today's date
+
+%%%%%%%%%%%%%%%%%   PACKAGE IMPORTS   %%%%%%%%%%%%%%%%%
+\usepackage[a4paper, bindingoffset=0.0cm, left=\marginleft, right=\marginright, top=\margintop, bottom=\marginbottom, footskip=.25in]{geometry}
+\usepackage[bottom]{footmisc}	% This is to push footnotes to the bottom
+\usepackage{url}
+\usepackage[dvipdfm, bookmarks, colorlinks, breaklinks, pdftitle=\pdftitle, pdfauthor=\pdfauthor]{hyperref}
+\hypersetup{linkcolor=\linkcolor, citecolor=\linkcolor, filecolor=black, urlcolor=\linkcolor} 
+\pagenumbering{gobble}	% Comment out to show page numbers (1st page number will not be shown)
+
+\begin{document}
+
+\signature{Name Surname}		% name for signature
+ 
+\longindentation=0pt				% needed to get closing flush left
+\let\raggedleft\raggedright		% needed to get date flush left
+
+% Reduce size of bullet character
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+%%%%%%%%%%%%%%%%%   COMMAND DEFINITIONS   %%%%%%%%%%%%%%%%%
+
+% Make the title of the cover letter
+\newcommand{\makecovertitle}{
+	\begin{center}
+	{\Large\bf \covertitle} 
+	\end{center}
+	\smallskip\hrule height 1pt
+}
+
+% Creates list of contact information
+\newcommand{\contact}{
+	\begin{center}
+	\authoraddress \\
+	Email: \href{mailto:\authoremail}{\texttt{\authoremail}} \\
+	Web: \url{\authorweb}\\
+	Tel: \authortel
+	\end{center} 
+}
+
+%%%%%%%%%%%%%%%%%   DOCUMENT   %%%%%%%%%%%%%%%%%
+
+\begin{letter}
+{	% Recipient
+\textbf{Receipient} \\
+Address line 1 \\
+Address line 2 \\
+City \\
+Country
+}
+
+\makecovertitle
+
+\contact
+
+\opening{Dear Sir/Madam,} 
+ 
+Lorem ipsum dolor sit amet, cetero eligendi vim eu, te usu aperiri meliore. Sumo omnes verterem cum ei, ex stet causae eam, ei eius vitae mei. Aliquando elaboraret et eos. Veniam debitis posidonium eam ad. Duo cu dicta vituperata definitiones.
+
+Et sea simul quaerendum, tantas habemus nec ad. An pro tamquam nusquam appellantur, ex sit dicat pertinax. An ius reque deserunt abhorreant. Vis ne vidit saperet, ad graeci facilis eos. Quis libris erroribus in duo, mea etiam senserit disputando an. Vim consul mediocritatem ad, vim ne diceret denique.
+
+Regione tincidunt in ius. Vis id esse saepe, vix ut fugit nobis. An duo noster epicuri deseruisse, vero dicam tractatos eam in. Et legere feugiat probatus nec, no ius admodum noluisse argumentum. Atqui primis audire et his.
+
+Appetere posidonium ne eos. Mucius fabulas pri id, ludus apeirian periculis pro id, ea est quot patrioque. Ipsum saepe sea id. Option percipitur eu vim. At mazim movet everti nec.
+
+No verterem invenire conceptam vel, ad vel graece eirmod, quas doctus eam no. Odio timeam quo an. Omnes utinam eu mea. Malis quaeque omnesque sed et, ea denique ocurreret quo. Qui primis lobortis suavitate ex, nec amet fabulas gubergren ad. Sea oratio timeam adolescens ei. Mel ei dolore assueverit.
+
+Eos graeci consequat ad, fugit dignissim referrentur te nam, pertinacia instructior nam in. 
+
+\begin{itemize}
+\item Affert vivendo incorrupte vis an, ad omnes aeterno vel. In sed solet maiorum deserunt, an qui tation nonumes, no ius iuvaret dissentias adversarium.
+\item Nam utamur imperdiet ne, causae maiestatis vix ei. Eos detracto accusamus liberavisse at, falli regione no nam, ea nec omnium minimum petentium.
+\item Ne eam modo omittantur, eu qui hinc alterum.
+\end{itemize}   
+
+Ad albucius phaedrum vis, mandamus gloriatur mea et. Sea tation cotidieque adversarium ei. An nullam tamquam nec, pri quot discere reprehendunt ut. Probatus corrumpit referrentur duo eu. Ne vel iusto latine signiferumque.
+
+Inani ornatus noluisse at eos, pro deserunt facilisis consulatu in, in solum animal quaestio nam. Et prima quodsi eam, ad populo graeci democritum quo. Mel dicam denique fastidii ne. Habeo iudico splendide ad per, melius alterum no pri. Omnes postulant ei nam, his id vero voluptua, malis graecis cu vis\footnote{Vel cu lorem labore, cu mundi pertinacia posidonium nec.}.
+
+Wisi iriure referrentur cu per, fastidii omittantur neglegentur cu sea. Summo accusata vix an, inani fabulas oportere ex nam. Eos ei congue nonumes, mea ne aperiri adipisci, ex eam viris omnes tincidunt. Populo option cu ius. Eum splendide conceptam no, natum affert qui et, eam ei quem meis copiosae. Oblique sensibus disputando at ius.
+
+Quo solum eirmod ut, vide nostrud mediocrem has ea. Eum ferri causae oblique et, nec ex wisi etiam nullam, ut mea viderer reprehendunt. His virtute explicari splendide ea, prima quaeque id ius. Sed eu delenit singulis, quis voluptaria et vim, te dico graeco aliquip nam. Vim aeterno adipiscing liberavisse ex, prima sensibus cu his. Ad iriure pericula voluptatum pri, an nec duis copiosae.
+
+\closing{Sincerely,}
+ 
+% Enclosures
+\encl{Curriculum vitae}
+
+\end{letter}
+
+\end{document}
