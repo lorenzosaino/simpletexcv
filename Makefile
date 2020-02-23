@@ -1,4 +1,4 @@
-SHELL = /bin/sh
+SHELL = /bin/bash
 
 CV_NAME    = cv
 COVER_NAME = cover
@@ -24,5 +24,3 @@ clean:
 deepclean: clean
 	rm -f $(CV_NAME).pdf
 	rm -f $(COVER_NAME).pdf
-
-
