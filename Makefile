@@ -1,26 +1,27 @@
-SHELL = /bin/bash
+SHELL = /bin/bash -euo pipefail
 
 CV_NAME    = cv
 COVER_NAME = cover
-PDFLATEX   = pdflatex
+LATEXMK    = latexmk
 
-.PHONY: clean cv cover clean deepclean
+DOCKER_IMAGE = blang/latex:ubuntu
+
+.PHONY: all cv cover clean deepclean docker-all
 
 all: cv cover
 
 cv:
-	$(PDFLATEX) $(CV_NAME).tex
+	$(LATEXMK) -dvi- -pdf -file-line-error -interaction=nonstopmode $(CV_NAME).tex
 
 cover:
-	$(PDFLATEX) $(COVER_NAME).tex
+	$(LATEXMK) -dvi- -pdf -file-line-error -interaction=nonstopmode $(COVER_NAME).tex
 
 clean:
-	find . -name "*.log" | xargs rm -rf
-	find . -name "*.aux" | xargs rm -rf
-	find . -name "*.out" | xargs rm -rf
-	find . -name "*.bbl" | xargs rm -rf
-	find . -name "*.synctex.gz" | xargs rm -rf
+	find . -name "*.log" -o -name "*.aux" -o -name "*.dvi" -o -name "*.bbl" -o -name "*.blg" -o -name "*.out" -o -name "*.toc" -o -name "*.lof" -o -name "*.brf" -o -name "*.lot" -o -name "*.ent" -o -name "*.fls" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" -o -name "*.*~" | xargs rm -rf
 
 deepclean: clean
-	rm -f $(CV_NAME).pdf
-	rm -f $(COVER_NAME).pdf
+	rm -f {$(CV_NAME),$(COVER_NAME)}.pdf
+
+# Build CV and cover using a Docker container
+docker-all:
+	docker run --rm -i --user $(shell id -u):$(shell id -g) --network none -v "$(PWD)":/data $(DOCKER_IMAGE) make all
