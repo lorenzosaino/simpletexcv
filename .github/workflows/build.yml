@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Compile CV
-        uses: xu-cheng/latex-action@1.2.1
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: cv.tex
       - name: Compile cover letter
-        uses: xu-cheng/latex-action@1.2.1
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: cover.tex
