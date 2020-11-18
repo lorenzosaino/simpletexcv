@@ -6,7 +6,7 @@ LATEXMK    = latexmk
 
 DOCKER_IMAGE = blang/latex:ubuntu
 
-.PHONY: all cv cover clean deepclean docker-all
+.PHONY: all cv cover clean deepclean docker-%
 
 all: cv cover
 
@@ -22,6 +22,6 @@ clean:
 deepclean: clean
 	rm -f {$(CV_NAME),$(COVER_NAME)}.pdf
 
-# Build CV and cover using a Docker container
-docker-all:
-	docker run --rm -i --user $(shell id -u):$(shell id -g) --network none -v "$(PWD)":/data $(DOCKER_IMAGE) make all
+# Execute any target inside a Docker container
+docker-%:
+	docker run --rm -i --user $(shell id -u):$(shell id -g) --network none -v "$(PWD)":/data $(DOCKER_IMAGE) make $*
